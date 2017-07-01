@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install ca-certificates curl \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY simsun.ttc ${JRE_HOME}/lib/fonts
+COPY /JCE8 ${JRE_HOME}/lib/security
 
 RUN update-alternatives --install "/usr/bin/java" "java" "${JRE_HOME}/bin/java" 1 && \
 	update-alternatives --install "/usr/bin/javaws" "javaws" "${JRE_HOME}/bin/javaws" 1 && \
