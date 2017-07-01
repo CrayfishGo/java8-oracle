@@ -10,6 +10,7 @@ ENV SIG d54c1d3a095b4ff2b6607d096fa80163
 
 ENV JAVA_HOME /usr/lib/jvm/java-${VERSION}-oracle
 ENV JRE_HOME ${JAVA_HOME}/jre
+ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install ca-certificates curl \
 	-y --no-install-recommends && \
