@@ -8,7 +8,7 @@ ENV UPDATE 202
 ENV BUILD 08
 ENV SIG 1961070e4c9b4e26a04e7f5a083f551e
 
-ENV JRE_HOME /usr/lib/jvm/jre-${VERSION}-oracle
+ENV JRE_HOME ${JAVA_HOME}/jre
 ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install ca-certificates curl \
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install ca-certificates curl \
 	--header "Cookie: oraclelicense=accept-securebackup-cookie;" \
 	http://download.oracle.com/otn-pub/java/jdk/"${VERSION}"u"${UPDATE}"-b"${BUILD}"/"${SIG}"/jre-"${VERSION}"u"${UPDATE}"-linux-x64.tar.gz \
 	| tar xz -C /tmp && \
-	mkdir -p /usr/lib/jvm && mv /tmp/jre1.${VERSION}.0_${UPDATE} "${JAVA_HOME}" && \
+	mkdir -p /usr/lib/jvm && mv /tmp/jre1.${VERSION}.0_${UPDATE} "${JRE_HOME}" && \
 	apt-get autoclean && apt-get --purge -y autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
